@@ -1,27 +1,35 @@
-<?php
+<?php 
 
-$name = $_POST['name'];
-$email = $_POST['email'];
+include_once "./vendor/autoload.php";
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+$mail = new PHPMailer(true);
+
+$email = "info@visustrust.com";
+$name = "Visus Trust Limited";
+
 $subject = $_POST['subject'];
+$email1 = $_POST['email'];
 $message = $_POST['message'];
+$name1 = $_POST['name'];
 
-$body = `
-  <p> <b>Name:</b> $name </p> <br>
-  <p> <b>Email:</b> $email </p> <br>
-  <p> <b>Subject:</b> $subject </p> <br>
-  <p> <b>Message:</b> $message </p> <br>
-`;
+$body = "<p><b>Name: </b> $name1 </p><br>";
+$body .= "<p><b>Email: </b> $email1 </p><br>";
+$body .= "<p><b>Message: </b> $message </p><br>";
 
-$headers  = 'MIME-Version: 1.0' . "\r\n";
-$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
- 
-// Create email headers
-$headers .= 'From: '.$email."\r\n".
-    'Reply-To: '.$email."\r\n" .
-    'X-Mailer: PHP/' . phpversion();
+//Typical mail data
+$mail->addAddress($email, $name);
+$mail->isHTML(true);
+$mail->setFrom($email, $name);
+$mail->Subject = $subject;
+$mail->Body = "Mail contents";
 
-if(mail("muneebakram71999@gmail.com", $subject, $body, $headers)){
-  echo 'Your mail has been sent successfully.';
-} else{
-  echo 'Unable to send email. Please try again.';
+try{
+    $mail->Send();
+    echo "Success!";
+} catch(Exception $e){
+    //Something went bad
+    echo "Fail - " . $mail->ErrorInfo;
 }
