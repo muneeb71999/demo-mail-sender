@@ -1,0 +1,60 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+a{
+	text-decoration: none;
+	
+	&:hover{
+		color: #B99C66;
+	}
+}
+
+body{
+	font-family: 'Montserrat';
+	background-image: url(/assets/img/bg.png);
+	background-repeat: repeat-y;
+	background-size: cover;
+}
+
+.container{
+	max-width: 1480px;
+	width: 100%;
+	margin: 0 auto;
+	padding: 0 20px;
+}
+
+.divider{
+	background-color: var(--color-black);
+	height: 2px;
+	width: 100%;
+	margin-top: 12px;
+	margin-bottom: 40px;
+}
+
+.navbar-active,
+.navbar-active .wrapper{
+	overflow: hidden !important;
+}
+
+
+// abstract files here
+@import"abstract/typography";
+@import"abstract/variables";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700&display=swap');
+
+// components files here
+@import"components/navbar";
+@import"components/btn";
+@import"components/page-header";
+@import"components/card";
+@import"components/footer";
+@import"components/form";
+
+// page files here
+@import"page/home";
+@import"page/teampage";
+@import"page/contact";
+@import"page/service";
