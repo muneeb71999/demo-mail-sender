@@ -1,6 +1,6 @@
 <?php 
 
-include_once "./vendor/autoload.php";
+include_once "../vendor/autoload.php";
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -28,10 +28,7 @@ $mail->Body = "Mail contents";
 
 try{
     $mail->Send();
-    echo "Success!";
     return header("Location:./contact.html?sent=success");
 } catch(Exception $e){
-    //Something went bad
-    echo "Fail - " . $mail->ErrorInfo;
     return header("Location:./contact.html?sent=error");
 }

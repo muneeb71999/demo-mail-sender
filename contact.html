@@ -124,6 +124,11 @@
 				<div class="divider"></div>
 
 				<form action="contact.php" method="POST">
+					<div class="row mb-2">
+						<div class="alert alert-success" style="display: none;" id="success">Thanks for submitting the Form</div>
+						<div class="alert alert-danger" style="display: none;" id="error">Error Submitting the Form</div>
+					</div>
+
 					<div class="row">
 						<div class="mb-3 col-sm-12 col-md-6">
 							<label for="name" class="form-label">NAME</label>
@@ -170,6 +175,7 @@
 
 	<!-- Custom Script -->
 	<script src="/assets/js/script.js"></script>
+	
 </body>
 
 </html>
