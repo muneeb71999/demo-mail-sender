@@ -17,14 +17,16 @@ $name1 = $_POST['name'];
 
 $body = "<p><b>Name: </b> $name1 </p><br>";
 $body .= "<p><b>Email: </b> $email1 </p><br>";
+$body .= "<p><b>Subject: </b> $subject </p><br>";
 $body .= "<p><b>Message: </b> $message </p><br>";
 
 //Typical mail data
 $mail->addAddress($email, $name);
 $mail->isHTML(true);
 $mail->setFrom($email, $name);
-$mail->Subject = $subject;
-$mail->Body = "Mail contents";
+$mail->Subject = "New Contact Form ($name)";
+$mail->Body = $body;
+
 
 try{
     $mail->Send();
